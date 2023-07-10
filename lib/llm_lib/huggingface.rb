@@ -4,7 +4,8 @@ class LlmLib::HuggingFace
 
         return LlmLib::Restclient.post(
             body: {
-
+                "model" => model,
+                "query" => query,
 
             },
             url: "https://api-inference.huggingface.co/models/#{model}",
