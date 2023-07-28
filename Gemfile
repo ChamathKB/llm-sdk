@@ -9,6 +9,7 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gem "json"
 gem "dotenv"
 gem "uri"
+gem 'rake' 
 
 group :test do
   gem "minitest", "~> 5.14"
