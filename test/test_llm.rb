@@ -17,8 +17,6 @@ class OpenAITest < Minitest::Test
     # Assert that the response is not nil
     refute_nil response
 
-    # Add more assertions as needed to validate the response
-    # For example, you can check if the response contains expected data or has a specific status code.
     assert_equal 200,
         response[:code]
   end
@@ -34,11 +32,10 @@ class HuggingFaceTest < Minitest::Test
     # Invoke the send method
     response = LlmLib::HuggingFace.send(apikey, model, query)
     puts response
+    
     # Assert that the response is not nil
     refute_nil response
 
-    # Add more assertions as needed to validate the response
-    # For example, you can check if the response contains expected data or has a specific status code.
     assert_equal 200,
       response[:code]
   end

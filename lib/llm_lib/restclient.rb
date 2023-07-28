@@ -1,6 +1,5 @@
 class LlmLib::Restclient
 
-# def self.post(url:, body:, headers: {})
 def self.post(url:, body:, apikey:)
 
     url = URI(url)
@@ -13,10 +12,7 @@ def self.post(url:, body:, apikey:)
     request = Net::HTTP::Post.new(url.path)
     request['Content-Type'] = 'application/json'
     request["cache-control"] = 'no-cache'
-    # request["apikey"] = apikey
-    # headers.each { |key, value| request[key] = value }
     request['Authorization'] = "Bearer #{apikey}" 
-    # request.set_form_data(body)
     request.body = JSON.generate(body)
 
     begin
