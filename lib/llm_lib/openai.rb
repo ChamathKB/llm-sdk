@@ -7,20 +7,17 @@ class LlmLib::OpenAI
         return LlmLib::Restclient.post(
             body: {
 		        "model" => model,
-                # "prompt" => prompt,
                 "messages" => [{ role: "user", content: prompt}],
                 "max_tokens" => max_tokens,
                 "temperature" => temperature,
                 "top_p" => top_p,
                 "n" => n,
                 "stream" => stream,
-                # "logprobs" => logprobs,
                 "stop" => stop,
 
             },
             url: "https://api.openai.com/v1/chat/completions",
-            apikey: apikey,
-            # headers: { 'Authorization' => "Bearer #{apikey}" },
+            apikey: apikey
         )
     end
 end

@@ -4,13 +4,11 @@ class LlmLib::HuggingFace
 
         return LlmLib::Restclient.post(
             body: {
-                # "model" => model,
                 "inputs" => query,
 
             },
             url: "https://api-inference.huggingface.co/models/#{model}",
             apikey: apikey
-            # headers:{ 'Authorization' => "Bearer #{apikey}" }
         )
     end
 end

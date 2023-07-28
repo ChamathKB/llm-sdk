@@ -6,7 +6,6 @@ class OpenAITest < Minitest::Test
   def test_send_method_returns_response
     # Test data
     apikey = ENV['OPENAI_API_KEY']
-    # body = { "text" => "Hello!" }
     model = "gpt-3.5-turbo"
     prompt = "Hi"
     max_tokens = 10
@@ -29,7 +28,6 @@ class HuggingFaceTest < Minitest::Test
   def test_send_method_returns_response
     # Test data
     apikey = ENV['HUGGINGFACE_API_KEY']
-    # body = { "text" => "Hello!" }
     model = "bigscience/bloom"
     query = "Hi"
 
