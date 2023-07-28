@@ -10,6 +10,7 @@ gem "json"
 gem "dotenv"
 gem "uri"
 gem 'rake' 
+gem "httparty"
 
 group :test do
   gem "minitest", "~> 5.14"
