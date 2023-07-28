@@ -45,51 +45,33 @@ module LlmLib
         #     )
         #   end
 
-        def chat_gpt_call(prompt, max_tokens, temperature = 0, top_p = 1, n = 1, stream = false, logprobs = nil, stop = "\n")
-            model = "text-davinci-003"
-            response = OpenAI.send(@api_key, {
-              "model" => model,
-              "prompt" => prompt,
-              "max_tokens" => max_tokens,
-              "temperature" => temperature,
-              "top_p" => top_p,
-              "n" => n,
-              "stream" => stream,
-              "logprobs" => logprobs,
-              "stop" => stop
-            })
-            response
-        end
-
-        def chat_gpt_call(prompt, max_tokens, temperature = 0, top_p = 1, n = 1, stream = false, logprobs = nil, stop = "\n")
+        def chat_gpt_call(prompt, max_tokens, temperature = 0, top_p = 1, n = 1, stream = false, stop = "\n")
             model = "gpt-3.5-turbo"
-            response = OpenAI.send(@api_key, {
-              "model" => model,
-              "prompt" => prompt,
-              "max_tokens" => max_tokens,
-              "temperature" => temperature,
-              "top_p" => top_p,
-              "n" => n,
-              "stream" => stream,
-              "logprobs" => logprobs,
-              "stop" => stop
-            })
+            response = OpenAI.send(@api_key,
+              model,
+              prompt,
+              max_tokens,
+              temperature,
+              top_p,
+              n,
+              stream,
+              stop
+            )
             response
         end
 
-        def gpt4_call(prompt, max_tokens, temperature = 0, top_p = 1, n = 1, stream = false, logprobs = nil, stop = "\n")
+        def gpt4_call(prompt, max_tokens, temperature = 0, top_p = 1, n = 1, stream = false, stop = "\n")
             model = "gpt-4"
-            response = OpenAI.send(@api_key, {
-              "model" => model,
-              "prompt" => prompt,
-              "max_tokens" => max_tokens,
-              "temperature" => temperature,
-              "top_p" => top_p,
-              "n" => n,
-              "stream" => stream,
-              "logprobs" => logprobs,
-              "stop" => stop
-            })
+            response = OpenAI.send(@api_key,
+                model,
+                prompt,
+                max_tokens,
+                temperature,
+                top_p,
+                n,
+                stream,
+                stop
+            )
             response
         end
     
@@ -114,26 +96,23 @@ module LlmLib
         end
 
         def hugging_bloom_call(query, model = "bigscience/bloom")
-            response = HuggingFace.send(@api_key, {
-            "model" => model,
-            "query" => query
-            }, model)
+            response = HuggingFace.send(@api_key,
+                                    query, 
+                                    model)
             response
         end
 
         def hugging_falcon_call(query, model = "tiiuae/falcon-40b-instruct")
-            response = HuggingFace.send(@api_key, {
-            "model" => model,
-            "query" => query
-            }, model)
+            response = HuggingFace.send(@api_key,
+                query, 
+                model)
             response
         end
 
         def hugging_llama2_call(query, model = "meta-llama/Llama-2-70b-chat-hf")
-            response = HuggingFace.send(@api_key, {
-            "model" => model,
-            "query" => query
-            }, model)
+            response = HuggingFace.send(@api_key,
+                query, 
+                model)
             response
         end
 
