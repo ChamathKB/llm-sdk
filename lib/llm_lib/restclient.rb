@@ -1,18 +1,23 @@
 class LlmLib::Restclient
 
+# def self.post(url:, body:, headers: {})
 def self.post(url:, body:, apikey:)
 
     url = URI(url)
+    apikey = apikey
 
     http = Net::HTTP.new(url.host, url.port)
     http.use_ssl = true
     http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
-    request = Net::HTTP::Post.new(url)
-    request["Content-Type"] = 'application/x-www-form-urlencoded'
+    request = Net::HTTP::Post.new(url.path)
+    request['Content-Type'] = 'application/json'
     request["cache-control"] = 'no-cache'
-    request["apikey"] = apikey
-    request.set_form_data(body)
+    # request["apikey"] = apikey
+    # headers.each { |key, value| request[key] = value }
+    request['Authorization'] = "Bearer #{apikey}" 
+    # request.set_form_data(body)
+    request.body = JSON.generate(body)
 
     begin
         response = http.request(request)
