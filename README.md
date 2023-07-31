@@ -1,4 +1,4 @@
-# llm-sdk
+# llm_lib
 
 Gem to invoke API calls to Huggingface and OpenAI LLMs.
 
@@ -10,7 +10,7 @@ gem install llm_lib
 ```
 
 ## Usage examples
-Replace 'YOUR_API_KEY_HERE' with your actual OpenAI/Huggingface API key
+Replace 'API_KEY' with your actual OpenAI/Huggingface API key
 
 #### OpenAI API call
 ```
@@ -37,7 +37,7 @@ puts response
 
 ## Supported models
 
-Currently support following models, more models will be added in future.
+Currently support following models, more models will be added in the future.
 #### OpenAI
 - gpt-3.5-turbo
 - gpt-4
@@ -46,7 +46,28 @@ Currently support following models, more models will be added in future.
 - bigscience/bloom
 - tiiuae/falcon-40b-instruct
 - meta-llama/Llama-2-70b-chat-hf
+- databricks/dolly-v2-12b
 
+##### Custom model
+Use following example to invoke unavailable models from huggingface.
+```
+class HuggingfaceApiClient
 
-## Declaimer 
-This is only a API wrapper for OpenAI and Huggingface models. Usage licence, pricing, limitations, etc; are relevant to each model and provider thus their guidelines and documentation must read before using.
+    def initialize(api_key)
+        @api_key = api_key
+    end
+
+    def hugging_dolly2_call(query, model = "databricks/dolly-v2-12b")
+        response = HuggingFace.send(@api_key,
+                                model,
+                                query 
+                                )
+        response
+    end
+end
+
+require 'llm_lib/huggingface'
+```
+
+## Disclaimer  
+This is only a API wrapper for OpenAI and Huggingface models. Usage license, pricing, limitations, etc; are relevant to each model and provider thus their guidelines and documentation must be read and followed before using.
