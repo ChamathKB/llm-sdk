@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
     spec.name          = 'llm_lib'                  
-    spec.version       = '0.1.0'                
+    spec.version       = '0.1.2'                
     spec.authors       = ['Chamath Attanayaka']          
     spec.email         = ['kaushalyabandaraatta@gmail.com']  
     spec.summary       = 'Invoke API calls to LLMs'    

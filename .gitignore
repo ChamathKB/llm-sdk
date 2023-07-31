@@ -1,1 +1,6 @@
 *.env
+tmp.rb
+*.gem
+.rake_tasks~
+
+Gemfile.lock

@@ -11,43 +11,13 @@ module LlmLib
         # response = client.chat_gpt_call(prompt, max_tokens)
         # puts response
 
-        # remove
-        # attr_reader :apikey
-        # def def initialize(apikey, query)
-        #   @apikey, @query = apikey, query
-        # end
-
         def initialize(apikey)
             @apikey = apikey
         end
 
-        # def chat_gpt_call(prompt, max_tokens, temperature = 0, top_p = 1, n = 1, stream = false, logprobs = nil, stop = "\n")
-        #     model = "text-davinci-003"
-        #     response = self.class.send(@api_key, {
-        #       "model" => model,
-        #       "prompt" => prompt,
-        #       "max_tokens" => max_tokens,
-        #       "temperature" => temperature,
-        #       "top_p" => top_p,
-        #       "n" => n,
-        #       "stream" => stream,
-        #       "logprobs" => logprobs,
-        #       "stop" => stop
-        #     })
-        #     response
-        #   end
-
-        #   def self.send(apikey, body)
-        #     LlmLib::Restclient.post(
-        #       body: body,
-        #       url: "https://api.openai.com/v1/completions",
-        #       apikey: apikey
-        #     )
-        #   end
-
         def chat_gpt_call(prompt, max_tokens, temperature = 0, top_p = 1, n = 1, stream = false, stop = "\n")
             model = "gpt-3.5-turbo"
-            response = OpenAI.send(@api_key,
+            response = OpenAI.send(@apikey,
               model,
               prompt,
               max_tokens,
@@ -62,7 +32,7 @@ module LlmLib
 
         def gpt4_call(prompt, max_tokens, temperature = 0, top_p = 1, n = 1, stream = false, stop = "\n")
             model = "gpt-4"
-            response = OpenAI.send(@api_key,
+            response = OpenAI.send(@apikey,
                 model,
                 prompt,
                 max_tokens,
@@ -97,32 +67,34 @@ module LlmLib
 
         def hugging_bloom_call(query, model = "bigscience/bloom")
             response = HuggingFace.send(@api_key,
-                                    query, 
-                                    model)
+                                    model,
+                                    query 
+                                    )
             response
         end
 
         def hugging_falcon_call(query, model = "tiiuae/falcon-40b-instruct")
             response = HuggingFace.send(@api_key,
-                query, 
-                model)
+                                    model, 
+                                    query)
             response
         end
 
         def hugging_llama2_call(query, model = "meta-llama/Llama-2-70b-chat-hf")
             response = HuggingFace.send(@api_key,
-                query, 
-                model)
+                                    model, 
+                                    query)
             response
         end
 
-        # def self.send(apikey, body, model)
-        #     LlmLib::Restclient.post(
-        #     body: body,
-        #     url: "https://api-inference.huggingface.co/models/#{model}",
-        #     apikey: apikey
-        #     )
-        # end
+        def hugging_dolly2_call(query, model = "databricks/dolly-v2-12b")
+            response = HuggingFace.send(@api_key,
+                                    model,
+                                    query 
+                                    )
+            response
+        end
+
     end
 
 end    
