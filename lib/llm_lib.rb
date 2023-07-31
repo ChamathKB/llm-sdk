@@ -75,15 +75,23 @@ module LlmLib
 
         def hugging_falcon_call(query, model = "tiiuae/falcon-40b-instruct")
             response = HuggingFace.send(@api_key,
-                model, 
-                query)
+                                    model, 
+                                    query)
             response
         end
 
         def hugging_llama2_call(query, model = "meta-llama/Llama-2-70b-chat-hf")
             response = HuggingFace.send(@api_key,
-                model, 
-                query)
+                                    model, 
+                                    query)
+            response
+        end
+
+        def hugging_dolly2_call(query, model = "databricks/dolly-v2-12b")
+            response = HuggingFace.send(@api_key,
+                                    model,
+                                    query 
+                                    )
             response
         end
 
