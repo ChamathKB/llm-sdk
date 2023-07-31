@@ -1,5 +1,7 @@
 # llm_lib
 
+![example workflow](https://github.com/ChamathKB/llm-sdk/actions/workflows/main.yml/badge.svg)
+
 Gem to invoke API calls to Huggingface and OpenAI LLMs.
 
 Support both Huggingface and OpenAI models.
