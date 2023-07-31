@@ -1,5 +1,6 @@
 # llm_lib
 
+Gem to invoke API calls to Huggingface and OpenAI LLMs.
 
 Support both Huggingface and OpenAI models.
 
@@ -69,4 +70,4 @@ require 'llm_lib/huggingface'
 ```
 
 ## Disclaimer  
-This is only a API wrapper for OpenAI and Huggingface models. Usage license, pricing, limitations, etc; are relevant to each model and provider thus their guidelines and documentation must be read and followed before using.
+This is only a API wrapper for OpenAI and Huggingface models. Usage license, pricing, limitations, etc; are relevant to each model and provider, thus their guidelines and documentation must be read and followed before using.
