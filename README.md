@@ -70,6 +70,7 @@ end
 
 require 'llm_lib/huggingface'
 ```
+For more visit the [documentation](https://github.com/ChamathKB/llm-sdk/wiki).
 
 ## Disclaimer  
 This is only a API wrapper for OpenAI and Huggingface models. Usage license, pricing, limitations, etc; are relevant to each model and provider, thus their guidelines and documentation must be read and followed before using.
