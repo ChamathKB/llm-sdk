@@ -95,6 +95,13 @@ module LlmLib
             response
         end
 
+        def hugging_flant5_call(query, model = "google/flan-t5-xl")
+            response = HuggingFace.send(@api_key,
+                                    model,
+                                    query 
+                                    )
+            response
+        end
     end
 
 end    
