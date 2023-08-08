@@ -40,3 +40,40 @@ class HuggingFaceTest < Minitest::Test
       response[:code]
   end
 end
+
+class Gpt3Test < Minitest::Test
+  def test_send_method_returns_response
+    
+    apikey = ENV['OPENAI_API_KEY']
+    client = LlmLib::OpenAIClient.new(apikey)
+
+    prompt = "Once upon a time"
+    max_tokens = 100
+    response = client.chat_gpt_call(prompt, max_tokens)
+    puts response
+    
+    # Assert that the response is not nil
+    refute_nil response
+
+    assert_equal 200,
+      response[:code]
+  end
+end
+
+
+class BloomTest < Minitest::Test
+  def test_send_method_returns_response
+    apikey = ENV['HUGGINGFACE_API_KEY']
+    client = LlmLib::HuggingfaceApiClient.new(apikey)
+
+    query = "Once upon a time"
+    response = client.hugging_bloom_call(query)
+    puts response
+
+    # Assert that the response is not nil
+    refute_nil response
+
+    assert_equal 200,
+      response[:code]
+  end
+end

@@ -4,3 +4,4 @@
 Gemfile.lock
 tmp.rb
 gem_*.sh
+rake_test.sh
